@@ -1,0 +1,18 @@
+{
+    "name": "tafhyseni/godaddy-php",
+    "description": "A minimalist Godaddy Api Client for domain purchases and administrations",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mustafe Hyseni",
+            "email": "tafhyseni@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Tafhyseni\\PhpGodaddy\\": "src/"
+        }
+    }
+}

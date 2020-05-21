@@ -3,6 +3,7 @@
 namespace Tafhyseni\PhpGodaddy;
 
 // use Tafhyseni\PhpGodaddy\Actions\Availability;
+use Tafhyseni\PhpGodaddy\Actions\Availability;
 use Tafhyseni\PhpGodaddy\Actions\Configuration;
 
 class Domain
@@ -29,6 +30,11 @@ class Domain
      */
     private $endpoint;
 
+    /**
+     * Configuration handler
+     */
+    private $configuration;
+
     function __construct(
         Configuration $config
     )
@@ -37,8 +43,7 @@ class Domain
         $this->secret_key = $config->getSecretKey();
         $this->environment = $config->getEnvironment();
         $this->endpoint = $config->getEndpoint();
-      
-        
+        $this->configuration = $config;
 
         ini_set('display_errors', '1');
         ini_set('display_startup_errors', '1');
@@ -58,11 +63,11 @@ class Domain
     /**
      * Check if a domain is available
      * @param string $domain 'desired domain'
-     * return
+     * @return Availability
      */
-    public function available(string $domain): \Tafhyseni\PhpGodaddy\Actions\Availability
+    public function available(string $domain): Availability
     {
-        return (new \Tafhyseni\PhpGodaddy\Actions\Availability);
+        return (new Availability($this->configuration))->setDomain($domain)->check();
     }
 
     /**
@@ -76,7 +81,7 @@ class Domain
             return;
         }
 
-        $this->env = 'real';
+        $this->env = 'production';
     }
 
     public function setKeys(string $api_key, string $secret_key): self
@@ -85,10 +90,4 @@ class Domain
         $this->secret_key = $secret_key;
         return new self();
     }
-
-    // public function hello()
-    // {
-    //     $available = new Availability();
-    //     $available->test();
-    // }
 }

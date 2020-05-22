@@ -90,6 +90,9 @@ class Domain
         return $results;
     }
 
-
+    public function suggestion(string $keyword): array
+    {
+        
+    }
 
 }

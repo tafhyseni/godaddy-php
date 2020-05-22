@@ -2,7 +2,6 @@
 
 namespace Tafhyseni\PhpGodaddy;
 
-// use Tafhyseni\PhpGodaddy\Actions\Availability;
 use Tafhyseni\PhpGodaddy\Actions\Availability;
 use Tafhyseni\PhpGodaddy\Actions\Configuration;
 
@@ -35,6 +34,10 @@ class Domain
      */
     private $configuration;
 
+    /**
+     * Domain constructor.
+     * @param Configuration $config
+     */
     function __construct(
         Configuration $config
     )
@@ -64,6 +67,7 @@ class Domain
      * Check if a domain is available
      * @param string $domain 'desired domain'
      * @return Availability
+     * @throws Exceptions\DomainException
      */
     public function available(string $domain): Availability
     {
@@ -71,23 +75,21 @@ class Domain
     }
 
     /**
-     * Define environment
+     * Check multiple domains for their availability status
+     * @param array $domains
+     * @return array
+     * @throws Exceptions\DomainException
      */
-    public function setDevEnv($status = true)
+    public function availableMultiple(array $domains): array
     {
-        if($status)
-        {
-            $this->env = 'dev';
-            return;
+        $results = [];
+        foreach ($domains as $domain){
+            $results[] = (new Availability($this->configuration))->setDomain($domain)->check();
         }
 
-        $this->env = 'production';
+        return $results;
     }
 
-    public function setKeys(string $api_key, string $secret_key): self
-    {
-        $this->api_key = $api_key;
-        $this->secret_key = $secret_key;
-        return new self();
-    }
+
+
 }

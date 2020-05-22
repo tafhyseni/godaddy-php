@@ -4,18 +4,36 @@ namespace Tafhyseni\PhpGodaddy\Request;
 
 use GuzzleHttp\Client;
 use Tafhyseni\PhpGodaddy\Actions\Configuration;
+use Tafhyseni\PhpGodaddy\Exceptions\DomainException;
 
 class Requests
 {
+    /**
+     * @var Configuration
+     */
     protected $configuration;
 
+    /**
+     * @var
+     */
     public $httpStatus;
+    /**
+     * @var
+     */
     public $httpHeaders;
+    /**
+     * @var
+     */
     public $httpBody;
+    /**
+     * @var
+     */
     public $httpMessage;
 
-
-
+    /**
+     * Requests constructor.
+     * @param Configuration $configuration
+     */
     function __construct(
         Configuration $configuration
     )
@@ -23,7 +41,11 @@ class Requests
         $this->configuration = $configuration;
     }
 
-    public function getRequest(string $url)
+    /**
+     * @param string $url
+     * @throws DomainException
+     */
+    public function checkAvailability(string $url)
     {
         try {
             $client = new Client(
@@ -38,8 +60,7 @@ class Requests
             $this->httpHeaders = $request->getHeaders();
             $this->httpBody = json_decode($request->getBody()->getContents());
         }catch (\Exception $e) {
-            $this->httpStatus = $e->getCode();
-            $this->httpMessage = $e->getMessage();
+            throw DomainException::authorizationFailed();
         }
     }
 

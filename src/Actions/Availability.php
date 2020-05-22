@@ -2,6 +2,7 @@
 
 namespace Tafhyseni\PhpGodaddy\Actions;
 
+use Tafhyseni\PhpGodaddy\Exceptions\DomainException;
 use Tafhyseni\PhpGodaddy\Request\Requests;
 
 class Availability extends Requests
@@ -36,16 +37,22 @@ class Availability extends Requests
     /**
      * @param string $domain
      * @return Availability
+     * @throws DomainException
      */
     public function setDomain(string $domain): self
     {
+        if(!$domain)
+        {
+            throw DomainException::noDomainProvided();
+        }
+
         $this->domain = $domain;
         return $this;
     }
 
     public function check(): self
     {
-        $this->getRequest(
+        $this->checkAvailability(
             self::URL_AVAILABLE_DOMAIN . $this->domain
         );
 
@@ -53,9 +60,9 @@ class Availability extends Requests
         {
             $this->domain = $this->httpBody->domain;
             $this->availability = $this->httpBody->available;
-            $this->price = $this->httpBody->price ?? null;
-            $this->currency = $this->httpBody->currency ?? null;
-            $this->period = $this->httpBody->period ?? null;
+            $this->price = isset($this->httpBody->price) ? ($this->httpBody->price / 1000000) : null;
+            $this->currency = isset($this->httpBody->currency) ? $this->httpBody->currency : null;
+            $this->period = isset($this->httpBody->period) ? $this->httpBody->period : null;
         }
 
         return $this;
@@ -64,5 +71,14 @@ class Availability extends Requests
     public function getStatus()
     {
         return $this->availability ?? false;
+    }
+
+    public function priceToString(): string
+    {
+        if(!$this->availability)
+        {
+            return "Domain not available to purchase";
+        }
+        return "{$this->price} {$this->currency} / {$this->period} year(s)";
     }
 }

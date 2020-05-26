@@ -32,6 +32,9 @@ class Availability extends Requests
      */
     public $period;
 
+    /**
+     * Method Endpoint
+     */
     const URL_AVAILABLE_DOMAIN = 'v1/domains/available?domain=';
 
     /**
@@ -52,7 +55,7 @@ class Availability extends Requests
 
     public function check(): self
     {
-        $this->checkAvailability(
+        $this->doAPIRequest(
             self::URL_AVAILABLE_DOMAIN . $this->domain
         );
 

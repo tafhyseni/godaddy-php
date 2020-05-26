@@ -4,6 +4,7 @@ namespace Tafhyseni\PhpGodaddy;
 
 use Tafhyseni\PhpGodaddy\Actions\Availability;
 use Tafhyseni\PhpGodaddy\Actions\Configuration;
+use Tafhyseni\PhpGodaddy\Actions\Suggestion;
 
 class Domain
 {
@@ -47,10 +48,6 @@ class Domain
         $this->environment = $config->getEnvironment();
         $this->endpoint = $config->getEndpoint();
         $this->configuration = $config;
-
-        ini_set('display_errors', '1');
-        ini_set('display_startup_errors', '1');
-        error_reporting(E_ALL);
     }
 
     public static function initialize(string $api_key, string $secret_key, $production = true): self
@@ -61,6 +58,18 @@ class Domain
             ->setEnvironment($production);
 
         return (new self($config));
+    }
+
+    /**
+     * Fetch domain suggestions based on a keyword
+     * @param string $keyword
+     * @param int $limit
+     * @return Suggestion
+     * @throws Exceptions\DomainException
+     */
+    public function suggestion(string $keyword, int $limit = 0): Suggestion
+    {
+        return (new Suggestion($this->configuration))->setKeyword($keyword)->setLimit($limit)->fetch();
     }
 
     /**
@@ -89,10 +98,4 @@ class Domain
 
         return $results;
     }
-
-    public function suggestion(string $keyword): array
-    {
-        
-    }
-
 }

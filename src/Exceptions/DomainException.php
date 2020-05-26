@@ -29,4 +29,9 @@ class DomainException extends Exception
         return new static('Domain name is required and cannot be empty!');
     }
 
+    public static function noKeywordProvided(): self
+    {
+        return new static('No keyword has been specified!');
+    }
+
 }

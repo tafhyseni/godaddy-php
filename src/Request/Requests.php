@@ -42,10 +42,11 @@ class Requests
     }
 
     /**
+     * Sends the request for a availability state of a domain
      * @param string $url
      * @throws DomainException
      */
-    public function checkAvailability(string $url)
+    public function doAPIRequest(string $url)
     {
         try {
             $client = new Client(

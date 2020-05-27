@@ -34,4 +34,9 @@ class DomainException extends Exception
         return new static('No keyword has been specified!');
     }
 
+    public static function invalidDomainPeriod(): self
+    {
+        return new static('Domain period should be within 1 and 10 range');
+    }
+
 }

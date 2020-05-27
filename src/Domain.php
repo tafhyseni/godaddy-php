@@ -2,10 +2,6 @@
 
 namespace Tafhyseni\PhpGodaddy;
 
-use Tafhyseni\PhpGodaddy\Actions\Availability;
-use Tafhyseni\PhpGodaddy\Actions\Configuration;
-use Tafhyseni\PhpGodaddy\Actions\Suggestion;
-
 class Domain
 {
     /**
@@ -37,10 +33,10 @@ class Domain
 
     /**
      * Domain constructor.
-     * @param Configuration $config
+     * @param Actions\Configuration $config
      */
     function __construct(
-        Configuration $config
+        Actions\Configuration $config
     )
     {
         $this->api_key = $config->getApiKey();
@@ -52,7 +48,7 @@ class Domain
 
     public static function initialize(string $api_key, string $secret_key, $production = true): self
     {
-        $config = (new Configuration())
+        $config = (new Actions\Configuration())
             ->setApiKey($api_key)
             ->setSecretKey($secret_key)
             ->setEnvironment($production);
@@ -64,23 +60,23 @@ class Domain
      * Fetch domain suggestions based on a keyword
      * @param string $keyword
      * @param int $limit
-     * @return Suggestion
+     * @return Actions\Suggestion
      * @throws Exceptions\DomainException
      */
-    public function suggestion(string $keyword, int $limit = 0): Suggestion
+    public function suggestion(string $keyword, int $limit = 0): Actions\Suggestion
     {
-        return (new Suggestion($this->configuration))->setKeyword($keyword)->setLimit($limit)->fetch();
+        return (new Actions\Suggestion($this->configuration))->setKeyword($keyword)->setLimit($limit)->fetch();
     }
 
     /**
      * Check if a domain is available
      * @param string $domain 'desired domain'
-     * @return Availability
+     * @return Actions\Availability
      * @throws Exceptions\DomainException
      */
-    public function available(string $domain): Availability
+    public function available(string $domain): Actions\Availability
     {
-        return (new Availability($this->configuration))->setDomain($domain)->check();
+        return (new Actions\Availability($this->configuration))->setDomain($domain)->check();
     }
 
     /**
@@ -93,9 +89,18 @@ class Domain
     {
         $results = [];
         foreach ($domains as $domain){
-            $results[] = (new Availability($this->configuration))->setDomain($domain)->check();
+            $results[] = (new Actions\Availability($this->configuration))->setDomain($domain)->check();
         }
 
         return $results;
+    }
+
+
+    /**
+     * @return Actions\Purchase
+     */
+    public function purchase(string $domain): Actions\Purchase
+    {
+        return (new Actions\Purchase($this->configuration))->setDomain($domain);
     }
 }

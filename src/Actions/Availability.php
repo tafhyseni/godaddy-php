@@ -49,7 +49,7 @@ class Availability extends Requests
             throw DomainException::noDomainProvided();
         }
 
-        $this->domain = $domain;
+        $this->domain = MyDomain::parse($domain)->getRegistrableDomain();
         return $this;
     }
 

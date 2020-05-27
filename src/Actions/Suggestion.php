@@ -10,6 +10,11 @@ use Tafhyseni\PhpGodaddy\Request\Requests;
 class Suggestion extends Requests
 {
     /**
+     * Method Endpoint
+     */
+    const URL_SUGGEST_DOMAIN = 'v1/domains/suggest?query=';
+
+    /**
      * Keyword parameter used as searching through suggestions
      * @var string
      */
@@ -20,13 +25,6 @@ class Suggestion extends Requests
      * @var integer
      */
     public $limit;
-
-    public $results;
-
-    /**
-     * Method Endpoint
-     */
-    const URL_SUGGEST_DOMAIN = 'v1/domains/suggest?query=';
 
     /**
      * @param string $keyword
@@ -60,11 +58,6 @@ class Suggestion extends Requests
         $this->doAPIRequest(
             $this->_prepareEndpoint()
         );
-
-        if($this->httpStatus === 200)
-        {
-            print_r($this->httpBody);die;
-        }
 
         return $this;
     }

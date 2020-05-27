@@ -2,14 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1fe733b3-b6cd-414f-b15a-97416721eee7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Actions/Agreement.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Actions/Purchase.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/godaddy-php.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/godaddy-php.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Actions/Availability.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Actions/Availability.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Actions/Suggestion.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Actions/Suggestion.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Domain.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Domain.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Exceptions/DomainException.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Exceptions/DomainException.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Request/Requests.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Request/Requests.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,12 +20,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="42" column="2" selection-start-line="42" selection-start-column="2" selection-end-line="42" selection-end-column="2" />
-              <folding>
-                <element signature="e#127#563#0#PHP" />
-                <element signature="e#610#808#0#PHP" />
-              </folding>
+            <state relative-caret-position="289">
+              <caret line="17" column="1" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -38,24 +29,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Domain.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="561">
-              <caret line="79" column="7" lean-forward="true" selection-start-line="79" selection-start-column="7" selection-end-line="79" selection-end-column="7" />
-              <folding>
-                <element signature="e#155#265#0#PHP" />
-                <element signature="e#293#406#0#PHP" />
-                <element signature="e#437#475#0#PHP" />
-                <element signature="e#507#538#0#PHP" />
-                <element signature="e#567#607#0#PHP" />
-                <element signature="e#641#715#0#PHP" />
-                <element signature="e#720#1156#0#PHP" />
-                <element signature="e#1162#1464#0#PHP" />
-                <element signature="e#1394#1579#0#PHP" />
-                <element signature="e#1398#1585#0#PHP" />
-                <element signature="e#1726#1891#0#PHP" />
-                <element signature="e#1640#1793#0#PHP" />
-                <element signature="e#1799#1962#0#PHP" />
-                <element signature="e#1967#2229#0#PHP" />
-              </folding>
+            <state relative-caret-position="1615">
+              <caret line="95" column="7" selection-start-line="95" selection-start-column="7" selection-end-line="95" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -64,7 +39,7 @@
         <entry file="file://$PROJECT_DIR$/src/Actions/Purchase.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="561">
-              <caret line="35" column="5" lean-forward="true" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
+              <caret line="35" column="5" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
               <folding>
                 <element signature="e#469#519#0#PHP" />
               </folding>
@@ -72,11 +47,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Actions/Agreement.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="391">
-              <caret line="23" column="1" lean-forward="true" selection-start-line="23" selection-start-column="1" selection-end-line="23" selection-end-column="1" />
+              <caret line="23" column="1" selection-start-line="23" selection-start-column="1" selection-end-line="23" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/composer.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="15" column="8" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -84,18 +68,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Actions/Suggestion.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
+            <state relative-caret-position="901">
               <caret line="57" column="33" selection-start-line="57" selection-start-column="33" selection-end-line="57" selection-end-column="33" />
               <folding>
                 <element signature="e#50#102#0#PHP" expanded="true" />
-                <element signature="e#73#166#0#PHP" />
-                <element signature="e#193#256#0#PHP" />
-                <element signature="e#281#315#0#PHP" />
-                <element signature="e#434#532#0#PHP" />
-                <element signature="e#538#599#0#PHP" />
                 <element signature="e#843#930#0#PHP" />
-                <element signature="e#1020#1284#0#PHP" />
-                <element signature="e#1089#1162#0#PHP" />
               </folding>
             </state>
           </provider>
@@ -104,13 +81,12 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Request/Requests.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="382">
+            <state relative-caret-position="714">
               <caret line="48" column="32" selection-start-line="48" selection-start-column="32" selection-end-line="48" selection-end-column="32" />
               <folding>
                 <element signature="e#48#70#0#PHP" expanded="true" />
                 <element signature="e#194#231#0#PHP" />
                 <element signature="e#693#823#0#PHP" />
-                <element signature="e#1364#1715#0#PHP" />
               </folding>
             </state>
           </provider>
@@ -147,6 +123,7 @@
         <option value="$PROJECT_DIR$/src/Domain.php" />
         <option value="$PROJECT_DIR$/src/Actions/Purchase.php" />
         <option value="$PROJECT_DIR$/src/Actions/Agreement.php" />
+        <option value="$PROJECT_DIR$/composer.json" />
       </list>
     </option>
   </component>
@@ -181,29 +158,6 @@
             <path>
               <item name="godaddy-php" type="b2602c69:ProjectViewProjectNode" />
               <item name="godaddy-php" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="godaddy-php" type="b2602c69:ProjectViewProjectNode" />
-              <item name="godaddy-php" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="godaddy-php" type="b2602c69:ProjectViewProjectNode" />
-              <item name="godaddy-php" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Actions" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="godaddy-php" type="b2602c69:ProjectViewProjectNode" />
-              <item name="godaddy-php" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Exceptions" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="godaddy-php" type="b2602c69:ProjectViewProjectNode" />
-              <item name="godaddy-php" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Request" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -248,18 +202,19 @@
       <workItem from="1590091960693" duration="7350000" />
       <workItem from="1590157228650" duration="8487000" />
       <workItem from="1590496613291" duration="6864000" />
+      <workItem from="1590539565048" duration="170000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22701000" />
+    <option name="totallyTimeSpent" value="22871000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1696" height="1005" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.20110025" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.20309168" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="1" />
@@ -302,13 +257,6 @@
     <entry file="file://$PROJECT_DIR$/vendor/guzzlehttp/psr7/src/Stream.php" />
     <entry file="file://$PROJECT_DIR$/vendor/guzzlehttp/guzzle/src/Client.php" />
     <entry file="file://$PROJECT_DIR$/vendor/psr/http-message/src/MessageInterface.php" />
-    <entry file="file://$PROJECT_DIR$/composer.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Http/IException.php" />
     <entry file="file://$PROJECT_DIR$/src/Http/ApiException.php" />
     <entry file="file://$PROJECT_DIR$/src/Request/DomainException.php" />
@@ -335,19 +283,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Request/Requests.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="382">
-          <caret line="48" column="32" selection-start-line="48" selection-start-column="32" selection-end-line="48" selection-end-column="32" />
-          <folding>
-            <element signature="e#48#70#0#PHP" expanded="true" />
-            <element signature="e#194#231#0#PHP" />
-            <element signature="e#693#823#0#PHP" />
-            <element signature="e#1364#1715#0#PHP" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Actions/Availability.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -366,62 +301,47 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="42" column="2" selection-start-line="42" selection-start-column="2" selection-end-line="42" selection-end-column="2" />
-          <folding>
-            <element signature="e#127#563#0#PHP" />
-            <element signature="e#610#808#0#PHP" />
-          </folding>
+        <state relative-caret-position="289">
+          <caret line="17" column="1" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Domain.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1615">
+          <caret line="95" column="7" selection-start-line="95" selection-start-column="7" selection-end-line="95" selection-end-column="7" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Actions/Purchase.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="561">
-          <caret line="35" column="5" lean-forward="true" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
+          <caret line="35" column="5" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
           <folding>
             <element signature="e#469#519#0#PHP" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Domain.php">
+    <entry file="file://$PROJECT_DIR$/src/Actions/Suggestion.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="79" column="7" lean-forward="true" selection-start-line="79" selection-start-column="7" selection-end-line="79" selection-end-column="7" />
+        <state relative-caret-position="901">
+          <caret line="57" column="33" selection-start-line="57" selection-start-column="33" selection-end-line="57" selection-end-column="33" />
           <folding>
-            <element signature="e#155#265#0#PHP" />
-            <element signature="e#293#406#0#PHP" />
-            <element signature="e#437#475#0#PHP" />
-            <element signature="e#507#538#0#PHP" />
-            <element signature="e#567#607#0#PHP" />
-            <element signature="e#641#715#0#PHP" />
-            <element signature="e#720#1156#0#PHP" />
-            <element signature="e#1162#1464#0#PHP" />
-            <element signature="e#1394#1579#0#PHP" />
-            <element signature="e#1398#1585#0#PHP" />
-            <element signature="e#1726#1891#0#PHP" />
-            <element signature="e#1640#1793#0#PHP" />
-            <element signature="e#1799#1962#0#PHP" />
-            <element signature="e#1967#2229#0#PHP" />
+            <element signature="e#50#102#0#PHP" expanded="true" />
+            <element signature="e#843#930#0#PHP" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Actions/Suggestion.php">
+    <entry file="file://$PROJECT_DIR$/src/Request/Requests.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="57" column="33" selection-start-line="57" selection-start-column="33" selection-end-line="57" selection-end-column="33" />
+        <state relative-caret-position="714">
+          <caret line="48" column="32" selection-start-line="48" selection-start-column="32" selection-end-line="48" selection-end-column="32" />
           <folding>
-            <element signature="e#50#102#0#PHP" expanded="true" />
-            <element signature="e#73#166#0#PHP" />
-            <element signature="e#193#256#0#PHP" />
-            <element signature="e#281#315#0#PHP" />
-            <element signature="e#434#532#0#PHP" />
-            <element signature="e#538#599#0#PHP" />
-            <element signature="e#843#930#0#PHP" />
-            <element signature="e#1020#1284#0#PHP" />
-            <element signature="e#1089#1162#0#PHP" />
+            <element signature="e#48#70#0#PHP" expanded="true" />
+            <element signature="e#194#231#0#PHP" />
+            <element signature="e#693#823#0#PHP" />
           </folding>
         </state>
       </provider>
@@ -429,7 +349,14 @@
     <entry file="file://$PROJECT_DIR$/src/Actions/Agreement.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
-          <caret line="23" column="1" lean-forward="true" selection-start-line="23" selection-start-column="1" selection-end-line="23" selection-end-column="1" />
+          <caret line="23" column="1" selection-start-line="23" selection-start-column="1" selection-end-line="23" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/composer.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="8" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="8" />
         </state>
       </provider>
     </entry>

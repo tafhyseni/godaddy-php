@@ -12,9 +12,17 @@
     "require": {
         "guzzlehttp/guzzle": "^6.5"
     },
+    "require-dev": {
+        
+    },
     "autoload": {
         "psr-4": {
             "Tafhyseni\\PhpGodaddy\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tafhyseni\\PhpGodaddy\\Tests\\": "tests/"
         }
     }
 }

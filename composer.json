@@ -13,7 +13,8 @@
         "guzzlehttp/guzzle": "^6.5"
     },
     "require-dev": {
-        
+        "phpunit/phpunit": "^9.0",
+        "pestphp/pest": "^0.1.5"
     },
     "autoload": {
         "psr-4": {
@@ -24,5 +25,7 @@
         "psr-4": {
             "Tafhyseni\\PhpGodaddy\\Tests\\": "tests/"
         }
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }

@@ -157,11 +157,19 @@
       <path value="$PROJECT_DIR$/vendor/symfony/console" />
     </include_path>
   </component>
+<<<<<<< Updated upstream
   <component name="ProjectFrameBounds">
     <option name="x" value="885" />
     <option name="y" value="155" />
     <option name="width" value="989" />
     <option name="height" value="835" />
+=======
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
+>>>>>>> Stashed changes
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">

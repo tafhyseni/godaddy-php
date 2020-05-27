@@ -42,9 +42,9 @@ class Requests
     }
 
     /**
-     * Sends the request for a availability state of a domain
      * @param string $url
      * @throws DomainException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function doAPIRequest(string $url)
     {
@@ -55,6 +55,28 @@ class Requests
             $request = $client->request(
                 'GET',
                 $this->configuration->getEndpoint() . $url
+            );
+
+            $this->httpStatus = $request->getStatusCode();
+            $this->httpHeaders = $request->getHeaders();
+            $this->httpBody = json_decode($request->getBody()->getContents());
+        }catch (\Exception $e) {
+            throw DomainException::authorizationFailed();
+        }
+    }
+
+    public function doAPIPurchase(string $url, $parameters)
+    {
+        try {
+            $client = new Client(
+                $this->getHeaders()
+            );
+            $request = $client->request(
+                'POST',
+                $this->configuration->getEndpoint() . $url,
+                [
+                    'form_params' => $parameters
+                ]
             );
 
             $this->httpStatus = $request->getStatusCode();

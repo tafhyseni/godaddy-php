@@ -9,6 +9,7 @@ use Tafhyseni\PhpGodaddy\Request\Requests;
 
 class Purchase extends Requests
 {
+    const API_URL = '/v1/domains/purchase';
     // Required
     public $consent;
 
@@ -105,8 +106,25 @@ class Purchase extends Requests
         $this->renewAuto = $autorenew;
     }
 
-    public function submit()
+    public function submit(): self
     {
+        echo '<pre>';
+        print_r($this->getAgreement());
+        echo '<pre>';die;
+        self::doAPIPurchase(self::API_URL, $this->purchaseParameters());
 
+        return $this;
+    }
+
+    protected function purchaseParameters(): array
+    {
+        return [
+            'consent' => $this->getAgreement(),
+            'domain' => $this->domain,
+            'nameServers' => $this->nameServers,
+            'period' => $this->period,
+            'privacy' => $this->privacy,
+            'renewAuto' => $this->renewAuto
+        ];
     }
 }

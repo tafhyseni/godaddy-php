@@ -95,12 +95,13 @@ class Domain
         return $results;
     }
 
-
     /**
+     * @param string $domain
+     * @param array $options
      * @return Actions\Purchase
      */
-    public function purchase(string $domain): Actions\Purchase
+    public function purchase(string $domain, array $options): Actions\Purchase
     {
-        return (new Actions\Purchase($this->configuration))->setDomain($domain);
+        return (new Actions\Purchase($this->configuration))->setDomain($domain)->setOptions($options);
     }
 }

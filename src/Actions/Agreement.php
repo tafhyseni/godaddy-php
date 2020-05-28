@@ -33,7 +33,7 @@ class Agreement extends Requests
     public function agreement(): self
     {
         $this->doAPIRequest($this->_prepareEndpoint());
-        $this->agreementKeys = reset($this->httpBody)->agreementKey;
+        $this->agreementKeys = [reset($this->httpBody)->agreementKey];
 
         return $this;
     }

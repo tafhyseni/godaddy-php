@@ -4,6 +4,7 @@
 namespace Tafhyseni\PhpGodaddy\Actions;
 
 
+use Tafhyseni\PhpGodaddy\Config\ContactRegistrant;
 use Tafhyseni\PhpGodaddy\Exceptions\DomainException;
 use Tafhyseni\PhpGodaddy\Request\Requests;
 
@@ -35,6 +36,15 @@ class Purchase extends Requests
 
     // returned instance of Agreement
     public $agreement;
+
+    public function setOptions(array $options): self
+    {
+
+        // Get Consent, contactAdmin, contactBilling, contactRegistrant, contactTech
+        $this->consent = $this->getAgreement();
+        $this->contactAdmin = (new ContactRegistrant())->setName($options['name'])->setAddressMailing($options); // SEND ONLY ONE OPTIONS..
+        return $this;
+    }
 
     /**
      * @param string $domain
@@ -108,10 +118,11 @@ class Purchase extends Requests
 
     public function submit(): self
     {
-        echo '<pre>';
-        print_r($this->getAgreement());
-        echo '<pre>';die;
-        self::doAPIPurchase(self::API_URL, $this->purchaseParameters());
+        echo "<pre>";
+        print_r($this);
+        echo "</pre>";
+        die;
+        //self::doAPIPurchase(self::API_URL, $this->purchaseParameters());
 
         return $this;
     }

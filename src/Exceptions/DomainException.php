@@ -39,4 +39,14 @@ class DomainException extends Exception
         return new static('Domain period should be within 1 and 10 range');
     }
 
+    public static function domainNotAvailable(): self
+    {
+        return new static('Domain is not available for registration');
+    }
+
+    public static function invalidPaymentInfo(): self
+    {
+        return new static('Invalid payment information providet at your API account!');
+    }
+
 }

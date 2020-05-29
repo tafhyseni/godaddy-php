@@ -65,6 +65,31 @@ class Requests
         }
     }
 
+    /**
+     * @param string $url
+     * @throws DomainException
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function doAPIAgreement(string $url)
+    {
+        try {
+            $client = new Client(
+                $this->getHeaders()
+            );
+            $request = $client->request(
+                'GET',
+                $this->configuration->getEndpoint() . $url
+            );
+
+            $this->httpStatus = $request->getStatusCode();
+            $this->httpHeaders = $request->getHeaders();
+            $content = json_decode($request->getBody()->getContents());
+            $this->httpBody = reset($content)->agreementKey;
+        }catch (\Exception $e) {
+            throw DomainException::authorizationFailed();
+        }
+    }
+
     public function doAPIPurchase(string $url, $parameters)
     {
         try {
@@ -75,7 +100,7 @@ class Requests
                 'POST',
                 $this->configuration->getEndpoint() . $url,
                 [
-                    'form_params' => $parameters
+                    'json' => $parameters
                 ]
             );
 
@@ -83,7 +108,16 @@ class Requests
             $this->httpHeaders = $request->getHeaders();
             $this->httpBody = json_decode($request->getBody()->getContents());
         }catch (\Exception $e) {
-            throw DomainException::authorizationFailed();
+            if($e->getCode() === 422)
+            {
+                throw DomainException::domainNotAvailable();
+            }elseif ($e->getCode() === 401) {
+                throw DomainException::authorizationFailed();
+            }elseif ($e->getCode() === 402){
+                throw DomainException::invalidPaymentInfo();
+            }else{
+                throw $e;
+            }
         }
     }
 

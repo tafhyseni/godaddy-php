@@ -6,75 +6,40 @@ namespace Tafhyseni\PhpGodaddy\Config;
 
 class ContactRegistrant
 {
-    public $name;
-    public $surname;
+    public $nameFirst;
+    public $nameLast;
     public $email;
     public $phone;
     public $organization;
     public $addressMailing;
 
     /**
-     * @param mixed $name
-     * @return contactRegistrant
+     * @param array $options
+     * @return ContactRegistrant
      */
-    public function setName($name): self
+    public function setData(array $options): self
     {
-        $this->name = $name;
+        $this->nameFirst = $options['name'];
+        $this->nameLast = $options['surname'];
+        $this->email = $options['email'];
+        $this->phone = $options['phone'];
+        $this->organization = $options['organization'] ?? '';
+
         return $this;
     }
 
     /**
-     * @param mixed $surname
+     * @param $options
      * @return contactRegistrant
      */
-    public function setSurname($surname): self
-    {
-        $this->surname = $surname;
-        return $this;
-    }
-
-    /**
-     * @param mixed $email
-     * @return contactRegistrant
-     */
-    public function setEmail($email): self
-    {
-        $this->email = $email;
-        return $this;
-    }
-
-    /**
-     * @param mixed $phone
-     * @return contactRegistrant
-     */
-    public function setPhone($phone): self
-    {
-        $this->phone = $phone;
-        return $this;
-    }
-
-    /**
-     * @param mixed $organization
-     * @return contactRegistrant
-     */
-    public function setOrganization($organization): self
-    {
-        $this->organization = $organization;
-        return $this;
-    }
-
-    /**
-     * @param mixed $addressMailing
-     * @return contactRegistrant
-     */
-    public function setAddressMailing($addressMailing): self
+    public function setAddressMailing($options): self
     {
         $this->addressMailing = (new ContactAddress())
-                        ->setAddress('Address')
-                        ->setCity('City')
-                        ->setCountry('US')
-                        ->setPostalCode('60669')
-                        ->setState('IL');
+                        ->setAddress($options['street'])
+                        ->setCity($options['city'])
+                        ->setCountry($options['country'])
+                        ->setPostalCode($options['postalCode'])
+                        ->setState($options['state']);
         return $this;
     }
 }

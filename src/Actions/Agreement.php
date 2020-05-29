@@ -9,9 +9,7 @@ class Agreement extends Requests
 {
     const API_URL = 'v1/domains/agreements';
 
-    public $domain;
-
-    public $privacy = false;
+    protected $tlds;
 
     public $agreedAt;
 
@@ -21,45 +19,30 @@ class Agreement extends Requests
 
     public function __construct(
         Configuration $configuration,
-        string $domain
+        string $tlds
     )
     {
         parent::__construct($configuration);
-        $this->agreedAt = date('Y-m-d H:i:s');
+        $this->agreedAt = date("Y-m-d\TH:i:s\Z");
         $this->agreedBy = $_SERVER['REMOTE_ADDR'];
-        $this->domain = $domain;
+        $this->tlds = $tlds;
     }
 
-    public function agreement(): self
+    public function agreement(string $suffix)
     {
-        $this->doAPIRequest($this->_prepareEndpoint());
-        $this->agreementKeys = [reset($this->httpBody)->agreementKey];
+        $this->doAPIAgreement($this->_prepareEndpoint());
+        $this->agreementKeys = [$this->httpBody];
 
-        return $this;
-    }
-
-    public function privacy(bool $privacy = true): self
-    {
-        $this->privacy = $privacy;
-
-        return $this;
+        return [
+            'agreedAt' => $this->agreedAt,
+            'agreedBy' => $this->agreedBy,
+            'agreementKeys' => $this->agreementKeys
+        ];
     }
 
     protected function _prepareEndpoint()
     {
-        $tldsUrl = self::API_URL . '?tlds=' . $this->getTLDS();
-        if($this->privacy)
-        {
-            return $tldsUrl . '&privacy=true';
-        }
-
-        return $tldsUrl;
+        return self::API_URL . '?tlds=' . $this->tlds;
     }
-
-    private function getTLDS()
-    {
-        return MyDomain::parse($this->domain)->getPublicSuffix();
-    }
-
 
 }

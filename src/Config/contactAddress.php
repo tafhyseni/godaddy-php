@@ -6,7 +6,7 @@ namespace Tafhyseni\PhpGodaddy\Config;
 
 class ContactAddress
 {
-    public $address;
+    public $address1;
     public $city;
     public $country;
     public $postalCode;
@@ -18,7 +18,7 @@ class ContactAddress
      */
     public function setAddress($address)
     {
-        $this->address = $address;
+        $this->address1 = $address;
         return $this;
     }
 

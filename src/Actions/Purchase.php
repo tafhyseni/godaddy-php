@@ -10,10 +10,9 @@ use Tafhyseni\PhpGodaddy\Request\Requests;
 
 class Purchase extends Requests
 {
-    const API_URL = '/v1/domains/purchase';
-    // Required
-    public $consent;
+    const API_URL = 'v1/domains/purchase';
 
+    public $consent;
     public $contactAdmin;
     public $contactBilling;
     public $contactRegistrant;
@@ -39,10 +38,11 @@ class Purchase extends Requests
 
     public function setOptions(array $options): self
     {
-
-        // Get Consent, contactAdmin, contactBilling, contactRegistrant, contactTech
         $this->consent = $this->getAgreement();
-        $this->contactAdmin = (new ContactRegistrant())->setName($options['name'])->setAddressMailing($options); // SEND ONLY ONE OPTIONS..
+        $this->contactAdmin = (new ContactRegistrant())->setData($options)->setAddressMailing($options);
+        $this->contactBilling = $this->contactAdmin;
+        $this->contactRegistrant = $this->contactAdmin;
+        $this->contactTech = $this->contactAdmin;
         return $this;
     }
 
@@ -66,9 +66,9 @@ class Purchase extends Requests
     /**
      * Returns user agreement contract
      */
-    protected function getAgreement(): Agreement
+    protected function getAgreement()
     {
-        return (new Agreement($this->configuration, $this->domain))->agreement();
+        return (new Agreement($this->configuration, $this->domain))->agreement(MyDomain::parse($this->domain)->getPublicSuffix());
     }
 
     /**
@@ -118,24 +118,24 @@ class Purchase extends Requests
 
     public function submit(): self
     {
-        echo "<pre>";
-        print_r($this);
-        echo "</pre>";
-        die;
-        //self::doAPIPurchase(self::API_URL, $this->purchaseParameters());
+        self::doAPIPurchase(self::API_URL, $this->purchaseParameters());
 
         return $this;
     }
 
-    protected function purchaseParameters(): array
+    protected function purchaseParameters()
     {
         return [
-            'consent' => $this->getAgreement(),
+            'consent' => $this->consent,
             'domain' => $this->domain,
             'nameServers' => $this->nameServers,
             'period' => $this->period,
             'privacy' => $this->privacy,
-            'renewAuto' => $this->renewAuto
+            'renewAuto' => $this->renewAuto,
+            'contactAdmin' => $this->contactAdmin,
+            'contactBilling' => $this->contactBilling,
+            'contactRegistrant' => $this->contactRegistrant,
+            'contactTech' => $this->contactTech,
         ];
     }
 }

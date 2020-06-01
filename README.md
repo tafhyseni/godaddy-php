@@ -1,4 +1,4 @@
-## GoDaddy PHP
+# GoDaddy PHP
 
 > A minimalist Godaddy Php package which has the basic methods available. This package is open for PR, feel free to contribute :)
 
@@ -44,50 +44,50 @@ try {
 ### Domain Suggestion
 > Returns a list of suggestions based in the keyword you specify.
 ~~~php
-	$domain = Domain::initialize('YOUR_API_KEY', 'YOUR_SECRET_KEY', 'PRODUCTION_MODE');
-	
-	$keyword = 'mybestdomain';
-	
-	$suggestion = $domain->suggestion($keyword), 'LIMIT');
+$domain = Domain::initialize('YOUR_API_KEY', 'YOUR_SECRET_KEY', 'PRODUCTION_MODE');
+
+$keyword = 'mybestdomain';
+
+$suggestion = $domain->suggestion($keyword), 'LIMIT');
 ~~~
 
 ### Domain Purchase
 > Purchase domain from Godaddy. First, set payment method for your account in Godaddy developer portal.
 ~~~php
-	$domainName = 'mypurchasedomain.com';
-	$domain = Domain::initialize('YOUR_API_KEY', 'YOUR_SECRET_KEY', 'PRODUCTION_MODE');
+$domainName = 'mypurchasedomain.com';
+$domain = Domain::initialize('YOUR_API_KEY', 'YOUR_SECRET_KEY', 'PRODUCTION_MODE');
+
+$options = [
+    'name'         => 'John',
+    'surname'      => 'Doe',
+    'email'        => 'john.doe@example.com',
+    'phone'        => '+48.111111111',
+    'organization' => 'Corporation Inc.',
+    'street'       => 'Street Ave. 666',
+    'city'         => 'New York City',
+    'country'      => 'US',
+    'postalCode'  => '91111',
+    'state'        => 'New York'
+];
 	
-	$options = [
-        'name'         => 'John',
-        'surname'      => 'Doe',
-        'email'        => 'john.doe@example.com',
-        'phone'        => '+48.111111111',
-        'organization' => 'Corporation Inc.',
-        'street'       => 'Street Ave. 666',
-        'city'         => 'New York City',
-        'country'      => 'US',
-        'postalCode'  => '91111',
-        'state'        => 'New York'
-    ];
-	
-	try {
-		$purchase = $domain->purchase($domainName, $options)
-			->nameServers([
-				'dns.nameserver.com',
-				'dns2.nameserver.com'
-			]);
-	}catch(Exception $e) {
-		// Catch Exception
-	}
+try {
+    $purchase = $domain->purchase($domainName, $options)
+        ->nameServers([
+            'dns.nameserver.com',
+            'dns2.nameserver.com'
+        ]);
+}catch(Exception $e) {
+    // Catch Exception
+}
 ~~~
 
 ### Change DNS Records
 ~~~php
-	$domainName = 'testinjoooo.biz'; // An already registered domain name under your account
-	$domain = Domain::initialize('YOUR_API_KEY', 'YOUR_SECRET_KEY', 'PRODUCTION_MODE');
+$domainName = 'testinjoooo.biz'; // An already registered domain name under your account
+$domain = Domain::initialize('YOUR_API_KEY', 'YOUR_SECRET_KEY', 'PRODUCTION_MODE');
 	
-	$domain->records($domainName, 'RECORD_TYPE', [
-        ['name' => 'Point', 'data' => '123.1.1.1'],
-        ['name' => 'Point2', 'data' => '123.1.1.3'],
-    ])->set();
+$domain->records($domainName, 'RECORD_TYPE', [
+	['name' => 'Point', 'data' => '123.1.1.1'],
+	['name' => 'Point2', 'data' => '123.1.1.3'],
+])->set();
 ~~~

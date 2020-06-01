@@ -3,9 +3,7 @@
 
 namespace Tafhyseni\PhpGodaddy\Actions;
 
-
-use Tafhyseni\PhpGodaddy\Exceptions\DomainException;
-use Tafhyseni\PhpGodaddy\Request\Requests;
+use Tafhyseni\PhpGodaddy\{Exceptions\DomainException, Request\Requests};
 
 class Suggestion extends Requests
 {

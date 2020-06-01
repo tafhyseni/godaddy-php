@@ -3,10 +3,7 @@
 
 namespace Tafhyseni\PhpGodaddy\Actions;
 
-
-use Tafhyseni\PhpGodaddy\Config\ContactRegistrant;
-use Tafhyseni\PhpGodaddy\Exceptions\DomainException;
-use Tafhyseni\PhpGodaddy\Request\Requests;
+use Tafhyseni\PhpGodaddy\{Config\ContactRegistrant, Exceptions\DomainException, Request\Requests};
 
 class Purchase extends Requests
 {

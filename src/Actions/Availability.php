@@ -2,8 +2,7 @@
 
 namespace Tafhyseni\PhpGodaddy\Actions;
 
-use Tafhyseni\PhpGodaddy\Exceptions\DomainException;
-use Tafhyseni\PhpGodaddy\Request\Requests;
+use Tafhyseni\PhpGodaddy\{Exceptions\DomainException, Request\Requests};
 
 class Availability extends Requests
 {
@@ -71,7 +70,7 @@ class Availability extends Requests
         return $this;
     }
 
-    public function getStatus()
+    public function isAvailable()
     {
         return $this->availability ?? false;
     }

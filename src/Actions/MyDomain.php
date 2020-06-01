@@ -2,10 +2,7 @@
 
 
 namespace Tafhyseni\PhpGodaddy\Actions;
-use Pdp\Cache;
-use Pdp\CurlHttpClient;
-use Pdp\Manager;
-use Pdp\Rules;
+use Pdp\{Cache, CurlHttpClient, Manager, Rules};
 
 class MyDomain
 {

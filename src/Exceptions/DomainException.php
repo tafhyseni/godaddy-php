@@ -49,4 +49,14 @@ class DomainException extends Exception
         return new static('Invalid payment information providet at your API account!');
     }
 
+    public static function invalidRecordType(): self
+    {
+        return new static('Record type is invalid. Available types are: A, AAA, CNAME, MX, NS, SRV, TXT');
+    }
+
+    public static function recordDomainNotFound(): self
+    {
+        return new static ('Given domain has not been found or is not registered');
+    }
+
 }

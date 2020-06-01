@@ -99,9 +99,15 @@ class Domain
      * @param string $domain
      * @param array $options
      * @return Actions\Purchase
+     * @throws Exceptions\DomainException
      */
     public function purchase(string $domain, array $options): Actions\Purchase
     {
         return (new Actions\Purchase($this->configuration))->setDomain($domain)->setOptions($options);
+    }
+
+    public function records(string $domain, string $type, array $data): Actions\Records
+    {
+        return (new Actions\Records($this->configuration))->setDomain($domain)->setType($type)->setData($data);
     }
 }

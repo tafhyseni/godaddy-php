@@ -90,6 +90,12 @@ class Requests
         }
     }
 
+    /**
+     * @param string $url
+     * @param $parameters
+     * @throws DomainException
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
     public function doAPIPurchase(string $url, $parameters)
     {
         try {
@@ -117,6 +123,36 @@ class Requests
                 throw DomainException::invalidPaymentInfo();
             }else{
                 throw $e;
+            }
+        }
+    }
+
+    public function doAPIrecords(string $url, $parameters)
+    {
+        try {
+            $client = new Client(
+                $this->getHeaders()
+            );
+            $request = $client->request(
+                'PUT',
+                $this->configuration->getEndpoint() . $url,
+                [
+                    'json' => $parameters
+                ]
+            );
+
+            $this->httpStatus = $request->getStatusCode();
+            $this->httpHeaders = $request->getHeaders();
+            $content = json_decode($request->getBody()->getContents());
+            $this->httpBody = reset($content)->agreementKey;
+        }catch (\Exception $e) {
+            if($e->getCode() === 422)
+            {
+                throw DomainException::invalidRecordType();
+            }elseif ($e->getCode() === 404) {
+                throw DomainException::recordDomainNotFound();
+            }else{
+                throw DomainException::authorizationFailed();
             }
         }
     }

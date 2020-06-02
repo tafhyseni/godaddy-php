@@ -1,6 +1,6 @@
 # GoDaddy PHP
 
-A minimalist Godaddy Php package for most of your operations with GoDaddy API..
+A minimalist Godaddy PHP package for most of your operations with GoDaddy API..
 *This package is open for PR, feel free to contribute :)*
 
 ### Installation

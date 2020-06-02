@@ -24,6 +24,7 @@ class Suggestion extends Requests
      */
     public $limit;
 
+    public $domains;
     /**
      * @param string $keyword
      * @return Suggestion
@@ -57,6 +58,11 @@ class Suggestion extends Requests
             $this->_prepareEndpoint()
         );
 
+        if($this->httpStatus === 200)
+        {
+            $this->domains = $this->_mapDomainsArray($this->httpBody);
+        }
+
         return $this;
     }
 
@@ -67,5 +73,12 @@ class Suggestion extends Requests
             return self::URL_SUGGEST_DOMAIN . $this->keyword . '&limit=' . $this->limit;
         }
         return self::URL_SUGGEST_DOMAIN . $this->keyword;
+    }
+
+    protected function _mapDomainsArray(array $array): array
+    {
+        return array_map(function($row){
+            return $row->domain;
+        }, $array);
     }
 }

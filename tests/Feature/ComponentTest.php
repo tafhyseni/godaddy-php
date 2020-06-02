@@ -3,9 +3,10 @@
 namespace Tafhyseni\PhpGodaddy\Tests;
 
 use Tafhyseni\PhpGodaddy\Domain;
+use Tafhyseni\PhpGodaddy\Exceptions\DomainException;
 
-it('returns empty array', function () {
-    $array = [];
+it('throws our custom exception', function () {
 
-    assertEmpty($array);
+//        assertInstanceOf();
+    //assertInstanceOf(DomainException::noSecretKeyProvided(), Domain::initialize());
 });

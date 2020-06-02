@@ -33,6 +33,11 @@ class Purchase extends Requests
     // returned instance of Agreement
     public $agreement;
 
+    public $currency;
+    public $itemCount;
+    public $orderId;
+    public $total;
+
     public function setOptions(array $options): self
     {
         $this->consent = $this->getAgreement();
@@ -116,6 +121,11 @@ class Purchase extends Requests
     public function submit(): self
     {
         self::doAPIPurchase(self::API_URL, $this->purchaseParameters());
+
+        $this->currency = $this->httpBody->currency;
+        $this->itemCount = $this->httpBody->itemCount;
+        $this->orderId = $this->httpBody->orderId;
+        $this->total = $this->httpBody->total;
 
         return $this;
     }

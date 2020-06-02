@@ -1,6 +1,7 @@
 # GoDaddy PHP
 
-> A minimalist Godaddy Php package which has the basic methods available. This package is open for PR, feel free to contribute :)
+A minimalist Godaddy Php package for most of your operations with GoDaddy API..
+*This package is open for PR, feel free to contribute :)*
 
 ### Installation
 
@@ -22,13 +23,14 @@ Domain::initialize('YOUR_API_KEY', 'YOUR_SECRET_KEY', 'PRODUCTION_MODE');
 #### Check Domain Availability
 >Returns domain availability status, price to string, currency and period.
 
+An example checking domain availability is as simple as it follows
+
 ~~~php
 try {
 	$domain = Domain::initialize('YOUR_API_KEY', 'YOUR_SECRET_KEY', 'PRODUCTION_MODE');
 	$mydomain = 'testingdomain.com';
 	
 	$check = $domain->available($domain);
-	// To check multiple domains use: $domain->availableMultiple([]);
 	
 	if($check->isAvailable())
 	{
@@ -40,18 +42,46 @@ try {
 }
 ~~~
 
+Available response properties and methods
 
-### Domain Suggestion
+| Parameter / Method | Data type | Description                                                  |
+| ------------------ | --------- | ------------------------------------------------------------ |
+| isAvailable()      | bool      | Returns domain availability status                           |
+| priceToString()    | string    | Returns a response message containing: { price } { currency } / { period } year(s) |
+| domain             | string    | Requested domain                                             |
+| availability       | integer   | Availability status                                          |
+| price              | float     | Domain price                                                 |
+| currency           | string    | Currency in which price is listed                            |
+| period             | integer   | Domain availability period                                   |
+
+#### Multiple Domain Checks
+> A multiple availability check is covered aswell
+~~~php
+	$domain->availableMultiple([]);
+~~~
+
+#### Domain Suggestion
 > Returns a list of suggestions based in the keyword you specify.
 ~~~php
 $domain = Domain::initialize('YOUR_API_KEY', 'YOUR_SECRET_KEY', 'PRODUCTION_MODE');
 
 $keyword = 'mybestdomain';
 
-$suggestion = $domain->suggestion($keyword), 'LIMIT');
+$suggestion = $domain->suggestion($keyword, 'LIMIT');
 ~~~
 
-### Domain Purchase
+| Request parameters | Data type | Default |
+| ------------------ | --------- | ------- |
+| keyword            | string    | -       |
+| limit              | integer   | 97      |
+
+| Response parameters | Description               |
+| ------------------- | ------------------------- |
+| keyword             | Requested keyword         |
+| limit               | Requested limit           |
+| domains             | Array of returned domains |
+
+#### Domain Purchase
 > Purchase domain from Godaddy. First, set payment method for your account in Godaddy developer portal.
 ~~~php
 $domainName = 'mypurchasedomain.com';
@@ -81,7 +111,23 @@ try {
 }
 ~~~
 
-### Change DNS Records
+| Request parameters | Data type | Default |
+| ------------------ | --------- | ------- |
+| domain             | string    | -       |
+| options            | array     | -       |
+| nameServers()      | array     | -       |
+| period()           | integer   | 1       |
+| autorenew()        | bool      | true    |
+
+| Response paramters | Data type | Description                                                  |
+| ------------------ | --------- | ------------------------------------------------------------ |
+| currency           | string    | Currency in which total is listed                            |
+| itemCount          | integer   | Number of items included in the order                        |
+| orderId            | integer   | Unique identifier of the order processed                     |
+| total              | integer   | Total cost of the domain and any selection addons in micro unit |
+
+#### Changing DNS Records
+
 ~~~php
 $domainName = 'testinjoooo.biz'; // An already registered domain name under your account
 $domain = Domain::initialize('YOUR_API_KEY', 'YOUR_SECRET_KEY', 'PRODUCTION_MODE');
@@ -91,3 +137,31 @@ $domain->records($domainName, 'RECORD_TYPE', [
 	['name' => 'Point2', 'data' => '123.1.1.3'],
 ])->set();
 ~~~
+
+### Default API Return object
+A general API response object is already declared and returns the following properties
+ property | data type | description 
+---------------|----------------- |---------------
+ httpStatus | integer | Http response code 
+ httpHeaders | array | Http headers 
+ httpBody | Object | Method properties 
+ httpMessage | string | Any available http message 
+
+ ### Exceptions
+ We created custom responses which should be catched from your side. Therefor, using try/catch blocks is **highly recommended**.
+
+Common Exception thrown
+
+| Code | Name                 | Message                                                      |
+| ---- | -------------------- | ------------------------------------------------------------ |
+| 401  | noApiKeyProvided     | API Key has not been provided!                               |
+| 401  | noSecretKeyProvided  | Secret Key has not been provided!                            |
+| 401  | authorizationFailed  | Authorization failed. Check your secret/api keys.            |
+| 400  | noDomainProvided     | Domain name is required and cannot be empty!                 |
+| 422  | noKeywordProvided    | No keyword has been specified!                               |
+| 400  | invalidDomainPeriod  | Domain period should be within 1 and 10 range                |
+| 404  | domainNotAvailable   | Domain is not available for registration                     |
+| 403  | invalidPaymentInfo   | Invalid payment information provided at your API account!    |
+| 400  | invalidRecordType    | Record type is invalid. Available types are: A, AAA, CNAME, MX, NS, SRV, TXT |
+| 404  | recordDomainNotFound | Given domain has not been found or is not registered         |
+

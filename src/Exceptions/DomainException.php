@@ -21,37 +21,37 @@ class DomainException extends Exception
 
     public static function authorizationFailed(): self
     {
-        return new static("Authorization failed. Check your secret/api keys.");
+        return new static("Authorization failed. Check your secret/api keys.",401);
     }
 
     public static function noDomainProvided(): self
     {
-        return new static('Domain name is required and cannot be empty!');
+        return new static('Domain name is required and cannot be empty!', 400);
     }
 
     public static function noKeywordProvided(): self
     {
-        return new static('No keyword has been specified!');
+        return new static('No keyword has been specified!', 400);
     }
 
     public static function invalidDomainPeriod(): self
     {
-        return new static('Domain period should be within 1 and 10 range');
+        return new static('Domain period should be within 1 and 10 range', 400);
     }
 
     public static function domainNotAvailable(): self
     {
-        return new static('Domain is not available for registration');
+        return new static('Domain is not available for registration', 404);
     }
 
     public static function invalidPaymentInfo(): self
     {
-        return new static('Invalid payment information providet at your API account!');
+        return new static('Invalid payment information provided at your API account!', 403);
     }
 
     public static function invalidRecordType(): self
     {
-        return new static('Record type is invalid. Available types are: A, AAA, CNAME, MX, NS, SRV, TXT');
+        return new static('Record type is invalid. Available types are: A, AAA, CNAME, MX, NS, SRV, TXT', 400);
     }
 
     public static function recordDomainNotFound(): self

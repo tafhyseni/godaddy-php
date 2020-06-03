@@ -1,4 +1,4 @@
-# GoDaddy PHP
+# GoDaddy PHP 🐘
 
 A minimalist Godaddy PHP package for most of your operations with GoDaddy API..
 *This package is open for PR, feel free to contribute :)*
@@ -57,7 +57,7 @@ Available response properties and methods
 #### Multiple Domain Checks
 > A multiple availability check is covered aswell
 ~~~php
-	$domain->availableMultiple([]);
+$domain->availableMultiple([]);
 ~~~
 
 #### Domain Suggestion

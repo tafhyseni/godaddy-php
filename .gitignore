@@ -5,4 +5,3 @@ index.php
 .idea
 coverage
 .phpunit.result.cache
-phpunit.xml

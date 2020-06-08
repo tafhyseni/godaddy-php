@@ -2,17 +2,18 @@
 
 namespace Tafhyseni\PhpGodaddy\Actions;
 
-use Tafhyseni\PhpGodaddy\{Exceptions\DomainException, Request\Requests};
+use Tafhyseni\PhpGodaddy\Exceptions\DomainException;
+use Tafhyseni\PhpGodaddy\Request\Requests;
 
 class Availability extends Requests
 {
     /**
-     * Domain name
+     * Domain name.
      */
     public $domain;
 
     /**
-     * Availability expressed in boolean
+     * Availability expressed in boolean.
      */
     public $availability;
 
@@ -22,17 +23,17 @@ class Availability extends Requests
     public $price;
 
     /**
-     * Price currency
+     * Price currency.
      */
     public $currency;
 
     /**
-     * Domain period
+     * Domain period.
      */
     public $period;
 
     /**
-     * Method Endpoint
+     * Method Endpoint.
      */
     const URL_AVAILABLE_DOMAIN = 'v1/domains/available?domain=';
 
@@ -43,23 +44,22 @@ class Availability extends Requests
      */
     public function setDomain(string $domain): self
     {
-        if(!$domain)
-        {
+        if (! $domain) {
             throw DomainException::noDomainProvided();
         }
 
         $this->domain = MyDomain::parse($domain)->getRegistrableDomain();
+
         return $this;
     }
 
     public function check(): self
     {
         $this->doAPIRequest(
-            self::URL_AVAILABLE_DOMAIN . $this->domain
+            self::URL_AVAILABLE_DOMAIN.$this->domain
         );
 
-        if($this->httpStatus === 200)
-        {
+        if ($this->httpStatus === 200) {
             $this->domain = $this->httpBody->domain;
             $this->availability = $this->httpBody->available;
             $this->price = isset($this->httpBody->price) ? ($this->httpBody->price / 1000000) : null;
@@ -77,10 +77,10 @@ class Availability extends Requests
 
     public function priceToString(): string
     {
-        if(!$this->availability)
-        {
-            return "Domain not available to purchase";
+        if (! $this->availability) {
+            return 'Domain not available to purchase';
         }
+
         return "{$this->price} {$this->currency} / {$this->period} year(s)";
     }
 }

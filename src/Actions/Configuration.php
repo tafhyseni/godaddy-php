@@ -8,84 +8,82 @@ class Configuration
 {
     /**
      * Your GoDaddy developer API KEYs
-     * Haven't one? Get it at https://developer.godaddy.com/
+     * Haven't one? Get it at https://developer.godaddy.com/.
      */
     public $api_key;
     public $secret_key;
 
     /**
      * Environment
-     * Default: Environment
+     * Default: Environment.
      */
     public $environment = 'production';
 
     /**
-     * API Endpoints
-     */  
+     * API Endpoints.
+     */
 //    const API_URL = 'https://api.godaddy.com/';
     const API_URL = 'https://api.ote-godaddy.com/';
     const SANDBOX_URL = 'https://api.ote-godaddy.com/';
 
-    function __construct(
-        
-    )
-    {
-        
+    public function __construct(
+
+    ) {
     }
 
     /**
-     * API Key setter
+     * API Key setter.
      * @param string $api_key
      * @return Configuration
      * @throws DomainException
      */
     public function setApiKey(string $api_key): self
     {
-        if(!$api_key)
-        {
+        if (! $api_key) {
             throw DomainException::noApiKeyProvided();
         }
         $this->api_key = $api_key;
+
         return $this;
     }
 
     /**
-     * Secret Key setter
+     * Secret Key setter.
      * @param string $secret_key
      * @return Configuration
      * @throws DomainException
      */
     public function setSecretKey(string $secret_key): self
     {
-        if(!$secret_key)
-        {
+        if (! $secret_key) {
             throw DomainException::noSecretKeyProvided();
         }
 
         $this->secret_key = $secret_key;
+
         return $this;
     }
 
     /**
-     * Defining Environment
+     * Defining Environment.
      * @param bool $is_real
      * @return Configuration
      */
     public function setEnvironment($production = true): self
     {
-        if($production)
-        {
+        if ($production) {
             $this->environment = 'production';
+
             return $this;
         }
 
         $this->environment = 'dev';
+
         return $this;
     }
 
-
     /**
-     * API Key getter
+     * API Key getter.
      * @return string
      */
     public function getApiKey(): string
@@ -94,7 +92,7 @@ class Configuration
     }
 
     /**
-     * Secret Key getter
+     * Secret Key getter.
      * @return string
      */
     public function getSecretKey(): string
@@ -103,7 +101,7 @@ class Configuration
     }
 
     /**
-     * Environment getter
+     * Environment getter.
      * @return string
      */
     public function getEnvironment(): string
@@ -112,13 +110,11 @@ class Configuration
     }
 
     /**
-     * Endpoint based in environment
+     * Endpoint based in environment.
      * @return string
      */
     public function getEndpoint()
     {
         return $this->environment == 'dev' ? self::SANDBOX_URL : self::API_URL;
     }
-    
-
 }

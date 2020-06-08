@@ -1,9 +1,9 @@
 <?php
 
-
 namespace Tafhyseni\PhpGodaddy\Actions;
 
-use Tafhyseni\PhpGodaddy\{Exceptions\DomainException, Request\Requests};
+use Tafhyseni\PhpGodaddy\Exceptions\DomainException;
+use Tafhyseni\PhpGodaddy\Request\Requests;
 
 class Records extends Requests
 {
@@ -20,12 +20,12 @@ class Records extends Requests
      */
     public function setDomain(string $domain): self
     {
-        if(!$domain)
-        {
+        if (! $domain) {
             throw DomainException::noDomainProvided();
         }
 
-        $this->domain = MyDomain::parse($domain)->getRegistrableDomain();;
+        $this->domain = MyDomain::parse($domain)->getRegistrableDomain();
+
         return $this;
     }
 
@@ -36,6 +36,7 @@ class Records extends Requests
     public function setType($type): self
     {
         $this->type = $type;
+
         return $this;
     }
 
@@ -46,6 +47,7 @@ class Records extends Requests
     public function setData(array $data): self
     {
         $this->data = $data;
+
         return $this;
     }
 
@@ -60,7 +62,7 @@ class Records extends Requests
     {
         $slugs = ['{domain}', '{type}'];
         $parameters = [$this->domain, $this->type];
+
         return str_replace($slugs, $parameters, self::API_URL);
     }
-
 }

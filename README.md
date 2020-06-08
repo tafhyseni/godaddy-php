@@ -1,7 +1,7 @@
 # GoDaddy PHP 🐘
 
-A minimalist Godaddy PHP package for most of your operations with GoDaddy API..\
-*This package is open for PR, feel free to contribute :)*\
+A minimalist Godaddy PHP package for most of your operations with GoDaddy API..<br />
+*This package is open for PR, feel free to contribute :)*<br />
 [![PHP version](https://img.shields.io/packagist/php-v/tafhyseni/godaddy-php.svg)](https://packagist.org/packages/tafhyseni/godaddy-php)
 [![Build Status](https://img.shields.io/travis/tafhyseni/godaddy-php/master.svg)](https://travis-ci.org/tafhyseni/godaddy-php)
 [![Latest Stable Version](https://poser.pugx.org/tafhyseni/godaddy-php/v)](//packagist.org/packages/tafhyseni/godaddy-php)

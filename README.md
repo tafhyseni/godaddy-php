@@ -5,6 +5,7 @@ A minimalist Godaddy PHP package for most of your operations with GoDaddy API..\
 [![Build Status](https://img.shields.io/travis/tafhyseni/godaddy-php/master.svg)](https://travis-ci.org/tafhyseni/godaddy-php)
 [![Latest Stable Version](https://poser.pugx.org/tafhyseni/godaddy-php/v)](//packagist.org/packages/tafhyseni/godaddy-php)
 [![License](https://poser.pugx.org/tafhyseni/godaddy-php/license)](//packagist.org/packages/tafhyseni/godaddy-php)
+![StyleCI](https://github.styleci.io/repos/265642951/shield?style=plastic)
 
 
 ### System Requirements

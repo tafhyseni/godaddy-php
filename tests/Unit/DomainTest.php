@@ -21,6 +21,6 @@ class DomainTest extends TestCase
     public function it_parses_domain()
     {
         $registrableDomain = \Tafhyseni\PhpGodaddy\Actions\MyDomain::parse('http://www.mybestdomain.com')->getRegistrableDomain();
-        assertEquals('mybestdomain.com', $registrableDomain);
+        $this->assertEquals('mybestdomain.com', $registrableDomain);
     }
 }

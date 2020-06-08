@@ -3,6 +3,12 @@
 A minimalist Godaddy PHP package for most of your operations with GoDaddy API..
 *This package is open for PR, feel free to contribute :)*
 
+### System Requirements
+You need:
+- PHP >= 7.2 but the latest stable version of PHP is highly recommended
+-   the `intl` extension
+
+
 ### Installation
 
 ~~~php

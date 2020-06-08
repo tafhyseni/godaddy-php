@@ -1,14 +1,11 @@
 <?php
 
-
 namespace Tafhyseni\PhpGodaddy\Exceptions;
-
 
 use Exception;
 
 class DomainException extends Exception
 {
-
     public static function noApiKeyProvided(): self
     {
         return new static('API Key has not been provided!', 401);
@@ -21,7 +18,7 @@ class DomainException extends Exception
 
     public static function authorizationFailed(): self
     {
-        return new static("Authorization failed. Check your secret/api keys.",401);
+        return new static('Authorization failed. Check your secret/api keys.',401);
     }
 
     public static function noDomainProvided(): self
@@ -58,5 +55,4 @@ class DomainException extends Exception
     {
         return new static ('Given domain has not been found or is not registered');
     }
-
 }

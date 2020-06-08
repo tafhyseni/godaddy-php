@@ -1,10 +1,8 @@
 <?php
 
-
 namespace Tafhyseni\PhpGodaddy\Config;
 
-
-class ContactRegistrant
+class contactRegistrant
 {
     public $nameFirst;
     public $nameLast;
@@ -40,6 +38,7 @@ class ContactRegistrant
                         ->setCountry($options['country'])
                         ->setPostalCode($options['postalCode'])
                         ->setState($options['state']);
+
         return $this;
     }
 }

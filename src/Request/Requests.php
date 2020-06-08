@@ -34,10 +34,9 @@ class Requests
      * Requests constructor.
      * @param Configuration $configuration
      */
-    function __construct(
+    public function __construct(
         Configuration $configuration
-    )
-    {
+    ) {
         $this->configuration = $configuration;
     }
 
@@ -54,13 +53,13 @@ class Requests
             );
             $request = $client->request(
                 'GET',
-                $this->configuration->getEndpoint() . $url
+                $this->configuration->getEndpoint().$url
             );
 
             $this->httpStatus = $request->getStatusCode();
             $this->httpHeaders = $request->getHeaders();
             $this->httpBody = json_decode($request->getBody()->getContents());
-        }catch (\Exception $e) {
+        } catch (\Exception $e) {
             throw DomainException::authorizationFailed();
         }
     }
@@ -78,14 +77,14 @@ class Requests
             );
             $request = $client->request(
                 'GET',
-                $this->configuration->getEndpoint() . $url
+                $this->configuration->getEndpoint().$url
             );
 
             $this->httpStatus = $request->getStatusCode();
             $this->httpHeaders = $request->getHeaders();
             $content = json_decode($request->getBody()->getContents());
             $this->httpBody = reset($content)->agreementKey;
-        }catch (\Exception $e) {
+        } catch (\Exception $e) {
             throw DomainException::authorizationFailed();
         }
     }
@@ -104,24 +103,23 @@ class Requests
             );
             $request = $client->request(
                 'POST',
-                $this->configuration->getEndpoint() . $url,
+                $this->configuration->getEndpoint().$url,
                 [
-                    'json' => $parameters
+                    'json' => $parameters,
                 ]
             );
 
             $this->httpStatus = $request->getStatusCode();
             $this->httpHeaders = $request->getHeaders();
             $this->httpBody = json_decode($request->getBody()->getContents());
-        }catch (\Exception $e) {
-            if($e->getCode() === 422)
-            {
+        } catch (\Exception $e) {
+            if ($e->getCode() === 422) {
                 throw DomainException::domainNotAvailable();
-            }elseif ($e->getCode() === 401) {
+            } elseif ($e->getCode() === 401) {
                 throw DomainException::authorizationFailed();
-            }elseif ($e->getCode() === 402){
+            } elseif ($e->getCode() === 402) {
                 throw DomainException::invalidPaymentInfo();
-            }else{
+            } else {
                 throw $e;
             }
         }
@@ -135,9 +133,9 @@ class Requests
             );
             $request = $client->request(
                 'PUT',
-                $this->configuration->getEndpoint() . $url,
+                $this->configuration->getEndpoint().$url,
                 [
-                    'json' => $parameters
+                    'json' => $parameters,
                 ]
             );
 
@@ -145,13 +143,12 @@ class Requests
             $this->httpHeaders = $request->getHeaders();
             $content = json_decode($request->getBody()->getContents());
             $this->httpBody = reset($content)->agreementKey;
-        }catch (\Exception $e) {
-            if($e->getCode() === 422)
-            {
+        } catch (\Exception $e) {
+            if ($e->getCode() === 422) {
                 throw DomainException::invalidRecordType();
-            }elseif ($e->getCode() === 404) {
+            } elseif ($e->getCode() === 404) {
                 throw DomainException::recordDomainNotFound();
-            }else{
+            } else {
                 throw DomainException::authorizationFailed();
             }
         }
@@ -161,10 +158,10 @@ class Requests
     {
         return [
             'headers' => [
-                'Authorization' => ['sso-key ' . $this->configuration->getApiKey() . ':' . $this->configuration->getSecretKey()],
+                'Authorization' => ['sso-key '.$this->configuration->getApiKey().':'.$this->configuration->getSecretKey()],
                 'Content-Type' => 'application/json',
                 'Accept' => 'application/json',
-            ]
+            ],
         ];
     }
 }

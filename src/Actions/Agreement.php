@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Tafhyseni\PhpGodaddy\Actions;
 
 use Tafhyseni\PhpGodaddy\Request\Requests;
@@ -20,8 +19,7 @@ class Agreement extends Requests
     public function __construct(
         Configuration $configuration,
         string $tlds
-    )
-    {
+    ) {
         parent::__construct($configuration);
         $this->agreedAt = date("Y-m-d\TH:i:s\Z");
         $this->agreedBy = $_SERVER['REMOTE_ADDR'];
@@ -36,13 +34,12 @@ class Agreement extends Requests
         return [
             'agreedAt' => $this->agreedAt,
             'agreedBy' => $this->agreedBy,
-            'agreementKeys' => $this->agreementKeys
+            'agreementKeys' => $this->agreementKeys,
         ];
     }
 
     protected function _prepareEndpoint()
     {
-        return self::API_URL . '?tlds=' . $this->tlds;
+        return self::API_URL.'?tlds='.$this->tlds;
     }
-
 }

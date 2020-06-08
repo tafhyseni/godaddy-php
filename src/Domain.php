@@ -6,28 +6,28 @@ class Domain
 {
     /**
      * Your GoDaddy developer API KEY
-     * Haven't one? Get it at https://developer.godaddy.com/
+     * Haven't one? Get it at https://developer.godaddy.com/.
      */
     private $api_key;
 
     /**
      * Your GoDaddy developer Secret KEY
-     * Haven't one? Get it at https://developer.godaddy.com/
+     * Haven't one? Get it at https://developer.godaddy.com/.
      */
     private $secret_key;
 
     /**
-     * Defines environment
+     * Defines environment.
      */
     private $environment;
 
     /**
-     * Api Endpoint
+     * Api Endpoint.
      */
     private $endpoint;
 
     /**
-     * Configuration handler
+     * Configuration handler.
      */
     private $configuration;
 
@@ -35,10 +35,9 @@ class Domain
      * Domain constructor.
      * @param Actions\Configuration $config
      */
-    function __construct(
+    public function __construct(
         Actions\Configuration $config
-    )
-    {
+    ) {
         $this->api_key = $config->getApiKey();
         $this->secret_key = $config->getSecretKey();
         $this->environment = $config->getEnvironment();
@@ -53,11 +52,11 @@ class Domain
             ->setSecretKey($secret_key)
             ->setEnvironment($production);
 
-        return (new self($config));
+        return new self($config);
     }
 
     /**
-     * Fetch domain suggestions based on a keyword
+     * Fetch domain suggestions based on a keyword.
      * @param string $keyword
      * @param int $limit
      * @return Actions\Suggestion
@@ -69,7 +68,7 @@ class Domain
     }
 
     /**
-     * Check if a domain is available
+     * Check if a domain is available.
      * @param string $domain 'desired domain'
      * @return Actions\Availability
      * @throws Exceptions\DomainException
@@ -80,7 +79,7 @@ class Domain
     }
 
     /**
-     * Check multiple domains for their availability status
+     * Check multiple domains for their availability status.
      * @param array $domains
      * @return array
      * @throws Exceptions\DomainException
@@ -88,7 +87,7 @@ class Domain
     public function availableMultiple(array $domains): array
     {
         $results = [];
-        foreach ($domains as $domain){
+        foreach ($domains as $domain) {
             $results[] = (new Actions\Availability($this->configuration))->setDomain($domain)->check();
         }
 

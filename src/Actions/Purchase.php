@@ -1,9 +1,10 @@
 <?php
 
-
 namespace Tafhyseni\PhpGodaddy\Actions;
 
-use Tafhyseni\PhpGodaddy\{Config\ContactRegistrant, Exceptions\DomainException, Request\Requests};
+use Tafhyseni\PhpGodaddy\Config\ContactRegistrant;
+use Tafhyseni\PhpGodaddy\Exceptions\DomainException;
+use Tafhyseni\PhpGodaddy\Request\Requests;
 
 class Purchase extends Requests
 {
@@ -16,7 +17,7 @@ class Purchase extends Requests
     public $contactTech;
 
     /**
-     * @var $domain
+     * @var
      */
     public $domain;
 
@@ -33,6 +34,11 @@ class Purchase extends Requests
     // returned instance of Agreement
     public $agreement;
 
+    public $currency;
+    public $itemCount;
+    public $orderId;
+    public $total;
+
     public function setOptions(array $options): self
     {
         $this->consent = $this->getAgreement();
@@ -40,6 +46,7 @@ class Purchase extends Requests
         $this->contactBilling = $this->contactAdmin;
         $this->contactRegistrant = $this->contactAdmin;
         $this->contactTech = $this->contactAdmin;
+
         return $this;
     }
 
@@ -50,8 +57,7 @@ class Purchase extends Requests
      */
     public function setDomain(string $domain): self
     {
-        if(!$domain)
-        {
+        if (! $domain) {
             throw DomainException::noDomainProvided();
         }
 
@@ -61,7 +67,7 @@ class Purchase extends Requests
     }
 
     /**
-     * Returns user agreement contract
+     * Returns user agreement contract.
      */
     protected function getAgreement()
     {
@@ -86,6 +92,7 @@ class Purchase extends Requests
     public function nameServers(array $nameServers = []): self
     {
         $this->nameServers = $nameServers;
+
         return $this;
     }
 
@@ -96,12 +103,12 @@ class Purchase extends Requests
      */
     public function period(int $period = 1): self
     {
-        if($period < 1 || $period > 10)
-        {
+        if ($period < 1 || $period > 10) {
             throw DomainException::invalidDomainPeriod();
         }
 
         $this->period = $period;
+
         return $this;
     }
 
@@ -116,6 +123,11 @@ class Purchase extends Requests
     public function submit(): self
     {
         self::doAPIPurchase(self::API_URL, $this->purchaseParameters());
+
+        $this->currency = $this->httpBody->currency;
+        $this->itemCount = $this->httpBody->itemCount;
+        $this->orderId = $this->httpBody->orderId;
+        $this->total = $this->httpBody->total;
 
         return $this;
     }

@@ -1,28 +1,30 @@
 <?php
 
-
 namespace Tafhyseni\PhpGodaddy\Actions;
 
-use Tafhyseni\PhpGodaddy\{Exceptions\DomainException, Request\Requests};
+use Tafhyseni\PhpGodaddy\Exceptions\DomainException;
+use Tafhyseni\PhpGodaddy\Request\Requests;
 
 class Suggestion extends Requests
 {
     /**
-     * Method Endpoint
+     * Method Endpoint.
      */
     const URL_SUGGEST_DOMAIN = 'v1/domains/suggest?query=';
 
     /**
-     * Keyword parameter used as searching through suggestions
+     * Keyword parameter used as searching through suggestions.
      * @var string
      */
     public $keyword;
 
     /**
-     * Limit suggestions output
-     * @var integer
+     * Limit suggestions output.
+     * @var int
      */
     public $limit;
+
+    public $domains;
 
     /**
      * @param string $keyword
@@ -31,23 +33,24 @@ class Suggestion extends Requests
      */
     public function setKeyword(string $keyword): self
     {
-        if(!$keyword)
-        {
+        if (! $keyword) {
             throw DomainException::noKeywordProvided();
         }
 
         $this->keyword = $keyword;
+
         return $this;
     }
 
     /**
-     * Limit suggestions
+     * Limit suggestions.
      * @param int $limit
      * @return Suggestion
      */
     public function setLimit(int $limit): self
     {
         $this->limit = $limit;
+
         return $this;
     }
 
@@ -57,15 +60,26 @@ class Suggestion extends Requests
             $this->_prepareEndpoint()
         );
 
+        if ($this->httpStatus === 200) {
+            $this->domains = $this->_mapDomainsArray($this->httpBody);
+        }
+
         return $this;
     }
 
     protected function _prepareEndpoint(): string
     {
-        if($this->limit)
-        {
-            return self::URL_SUGGEST_DOMAIN . $this->keyword . '&limit=' . $this->limit;
+        if ($this->limit) {
+            return self::URL_SUGGEST_DOMAIN.$this->keyword.'&limit='.$this->limit;
         }
-        return self::URL_SUGGEST_DOMAIN . $this->keyword;
+
+        return self::URL_SUGGEST_DOMAIN.$this->keyword;
+    }
+
+    protected function _mapDomainsArray(array $array): array
+    {
+        return array_map(function ($row) {
+            return $row->domain;
+        }, $array);
     }
 }

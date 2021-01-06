@@ -1,8 +1,11 @@
 <?php
 
-
 namespace Tafhyseni\PhpGodaddy\Actions;
-use Pdp\{Cache, CurlHttpClient, Manager, Rules};
+
+use Pdp\Cache;
+use Pdp\CurlHttpClient;
+use Pdp\Manager;
+use Pdp\Rules;
 
 class MyDomain
 {
@@ -23,7 +26,7 @@ class MyDomain
 
     public function handleParsing(string $domain): self
     {
-        $domain = preg_replace("(^https?://)", "", $domain );
+        $domain = preg_replace('(^https?://)', '', $domain);
         $manager = new Manager(new Cache(), new CurlHttpClient());
         $rules = $manager->getRules();
 

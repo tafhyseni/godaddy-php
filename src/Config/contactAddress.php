@@ -1,10 +1,8 @@
 <?php
 
-
 namespace Tafhyseni\PhpGodaddy\Config;
 
-
-class ContactAddress
+class contactAddress
 {
     public $address1;
     public $city;
@@ -19,6 +17,7 @@ class ContactAddress
     public function setAddress($address)
     {
         $this->address1 = $address;
+
         return $this;
     }
 
@@ -29,6 +28,7 @@ class ContactAddress
     public function setCity($city)
     {
         $this->city = $city;
+
         return $this;
     }
 
@@ -39,6 +39,7 @@ class ContactAddress
     public function setCountry($country)
     {
         $this->country = $country;
+
         return $this;
     }
 
@@ -49,6 +50,7 @@ class ContactAddress
     public function setPostalCode($postalCode)
     {
         $this->postalCode = $postalCode;
+
         return $this;
     }
 
@@ -59,6 +61,7 @@ class ContactAddress
     public function setState($state)
     {
         $this->state = $state;
+
         return $this;
     }
 }

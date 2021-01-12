@@ -40,9 +40,9 @@ An example checking domain availability is as simple as it follows
 try {
 	$domain = Domain::initialize('YOUR_API_KEY', 'YOUR_SECRET_KEY', 'PRODUCTION_MODE');
 	$mydomain = 'testingdomain.com';
-	
+
 	$check = $domain->available($domain);
-	
+
 	if($check->isAvailable())
 	{
 		// Domain is available
@@ -110,13 +110,13 @@ $options = [
     'postalCode'  => '91111',
     'state'        => 'New York'
 ];
-	
+
 try {
     $purchase = $domain->purchase($domainName, $options)
         ->nameServers([
             'dns.nameserver.com',
             'dns2.nameserver.com'
-        ]);
+        ])->submit();
 }catch(Exception $e) {
     // Catch Exception
 }
@@ -142,7 +142,7 @@ try {
 ~~~php
 $domainName = 'testinjoooo.biz'; // An already registered domain name under your account
 $domain = Domain::initialize('YOUR_API_KEY', 'YOUR_SECRET_KEY', 'PRODUCTION_MODE');
-	
+
 $domain->records($domainName, 'RECORD_TYPE', [
 	['name' => 'Point', 'data' => '123.1.1.1'],
 	['name' => 'Point2', 'data' => '123.1.1.3'],
@@ -151,12 +151,12 @@ $domain->records($domainName, 'RECORD_TYPE', [
 
 ### Default API Return object
 A general API response object is already declared and returns the following properties
- property | data type | description 
+ property | data type | description
 ---------------|----------------- |---------------
- httpStatus | integer | Http response code 
- httpHeaders | array | Http headers 
- httpBody | Object | Method properties 
- httpMessage | string | Any available http message 
+ httpStatus | integer | Http response code
+ httpHeaders | array | Http headers
+ httpBody | Object | Method properties
+ httpMessage | string | Any available http message
 
  ### Exceptions
  We created custom responses which should be catched from your side. Therefor, using try/catch blocks is **highly recommended**.
@@ -175,4 +175,3 @@ Common Exception thrown
 | 403  | invalidPaymentInfo   | Invalid payment information provided at your API account!    |
 | 400  | invalidRecordType    | Record type is invalid. Available types are: A, AAA, CNAME, MX, NS, SRV, TXT |
 | 404  | recordDomainNotFound | Given domain has not been found or is not registered         |
-

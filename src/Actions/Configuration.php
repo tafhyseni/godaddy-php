@@ -23,7 +23,7 @@ class Configuration
      * API Endpoints.
      */
 //    const API_URL = 'https://api.godaddy.com/';
-    const API_URL = 'https://api.ote-godaddy.com/';
+    const API_URL = 'https://api.godaddy.com/';
     const SANDBOX_URL = 'https://api.ote-godaddy.com/';
 
     public function __construct(

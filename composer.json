@@ -11,7 +11,7 @@
     ],
     "require": {
 
-        "php": "^7.2.5",
+        "php": "^7.2.5|^8.0",
         "ext-intl": "*",
         "guzzlehttp/guzzle": ">=6.5",
         "jeremykendall/php-domain-parser": "^5.6"
